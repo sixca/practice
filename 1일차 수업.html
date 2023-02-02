@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 구조설계</title>
+</head>
+<style>
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    header {
+        width: 100%;
+        height: 15%;
+        background: yellow;
+    }
+
+    nav {
+        width: 15%;
+        height: 70%;
+        float: left;
+        background: orange;
+    }
+
+    section {
+        width: 70%;
+        height: 70%;
+        float: left;
+        background: olivedrab;
+    }
+
+    aside {
+        width: 15%;
+        height: 70%;
+        float: left;
+        background: orange;
+    }
+
+    footer {
+        width: 100%;
+        height: 15%;
+        clear: both;
+        background: plum;
+    }
+</style>
+
+<body>
+    <header class="header">header</header>
+    <nav class="nav">nav</nav>
+    <section class="section">section</section>
+    <aside class="aside">aside</aside>
+    <footer class="footer">footer</footer>
+</body>
+
+</html>
+
+<!--float:left/right는 좌/우 배치, float:none 좌우 어느 쪽으로도 배치X  -->
+<!--clear:both는 float:left/right영역을 취소하고 아래(under)로 들어가게 됨-->
+<!--<link rel="stylesheet" href="style.css">을 <head>에 넣어서 스타일을 끌어와 쓸 수 있음-->

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>자기 소개 페이지 만들기</title>
+  <style>
+    .accent {
+      color:blue;
+    }
+    #heading { color:black; }
+  </style>
+</head>
+<body>
+  <h1>자기소개</h1>    
+  <img src="images/권현진.jpg" alt="권현진이미지" width="400">
+  <p>이름: <span id="heading">권현진</span></p>
+  <p>취미: <span class="accent">자연탐방</span></p>
+  <p>MBTI: <span class="accent">ENTJ</span></p>
+  <script>
+	  var heading = document.querySelector('#heading');
+	  heading.onclick = function() {
+	  heading.style.color = "blue";
+	  }
+	</script>
+</body>
+</html>

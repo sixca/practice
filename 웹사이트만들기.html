@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>하이엔드 힐링숙소 'STAY.H'</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="container">    
+    <header>
+      <div id="logo">
+        <a href="index.html">
+          <h1>S t a y, H</h1>
+        </a>
+      </div>
+      <div class="login">
+        <label for="id">아이디</label>
+        <input type="text" id="id">
+        <label for="pw">비밀번호</label>
+        <input type="password" id="pw">
+        <input type="submit" value="로그인">
+      </div>
+      <nav>
+          <ul id="topMenu">
+          <li><a href="#">FIND STAY<span>▼</span></a>
+            <ul>
+              <li><a href="#">서울</a></li>
+              <li><a href="#">수도권</a></li>
+            </ul>
+          </li>
+          <li><a href="#">PROMOTION<span>▼</span></a>
+            <ul>
+              <li><a href="#">이벤트</a></li>
+              <li><a href="#">쿠폰</a></li>
+              <li><a href="#">혜택</a></li>
+            </ul>
+          </li>
+          <li><a href="#">JOURNAL</a></li>
+          <li><a href="#">Pre-Order</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="slideShow">
+      <div id="slides">
+        <img src="images/photo-1.jpg" alt="">
+        <img src="images/photo-2.jpg" alt="">
+        <img src="images/photo-3.jpg" alt="">
+        <button id="prev">&lang;</button>
+        <button id="next">&rang;</button>
+      </div>
+    </div>
+    <div id="contents">
+      <div id="tabMenu">
+        <input type="radio" id="tab1" name="tabs" checked>
+        <label for="tab1">공지사항</label>
+        <input type="radio" id="tab2" name="tabs">
+        <label for="tab2">갤러리</label>      
+        <div id="notice" class="tabContent">
+          <h2>공지사항 내용입니다.</h2>
+          <ul>            
+            <li><a href="#">가족과 떠나는 겨울 나들이</a></li>
+            <li><a href="#">책과 함께 새해를 준비해요</a></li>
+            <li><a href="#">영감을 주는 건축디자인</a></li>
+            <li><a href="#">오래도록 기억될 우리들의 파라다이스</a></li>
+            <li><a href="#">강원 구옥을 재해석한 영감의 건축</a></li>            
+          </ul>
+        </div>
+        <div id="gallery" class="tabContent">
+          <h2>갤러리 내용입니다.</h2>
+          <ul>
+            <li><a href="images/img-1.jpg"><img src="images/img-1.jpg"></a></li>
+            <li><a href="images/img-2.jpg"><img src="images/img-2.jpg"></li>
+            <li><a href="images/img-3.jpg"><img src="images/img-3.jpg"></li> 
+            <li><a href="images/img-4.jpg"><img src="images/img-4.jpg"></li>
+            <li><a href="images/img-5.jpg"><img src="images/img-5.jpg"></li>
+            <li><a href="images/img-6.jpg"><img src="images/img-6.jpg"></li>                     
+                        
+          </ul>
+        </div>        
+      </div>
+      <div id="links">
+        <ul>
+          <li>
+            <a href="#">
+              <span id="quick-icon1"></span>
+              <p>제주토끼</p>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <span id="quick-icon2"></span>
+              <p>으귀소담</p>
+            </a>            
+          </li>
+          <li>
+            <a href="#">
+              <span id="quick-icon3"></span>
+              <p>의림여관</p>
+            </a>            
+          </li>
+        </ul>
+      </div>
+    </div>  
+    <footer>    
+      <div id="bottomMenu">
+        <ul>
+          <li><a href="#">회사 소개</a></li>
+          <li><a href="#">개인정보처리방침</a></li>
+          <li><a href="#">숙박 약관</a></li>
+          <li><a href="#">사이트맵</a></li>
+        </ul>
+        <div id="sns">
+          <ul>
+            <li><a href="#"><img src="images/sns-1.png"></a></li>
+            <li><a href="#"><img src="images/sns-2.png"></a></li>
+            <li><a href="#"><img src="images/sns-3.png"></a></li>
+          </ul>
+        </div>
+      </div>
+      <div id="company">
+        <p>사업자명 : (주)스테이에이치</p>
+        <p>대표자 : 박혜민, 권현진</p>  
+        <p>서울 성동구 성수동2가 300-2 (대표전화) 02-2073-1988</p> 
+      </div>     
+    </footer>  
+  </div> 
+
+  <script src="js/slideshow.js"></script>
+</body>
+</html>

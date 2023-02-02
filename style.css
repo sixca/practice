@@ -1,0 +1,22 @@
+table { 
+    border:5px; height:400px; width: 800px; font-size: 20pt; border-color:rgb(57, 156, 42); border-collapse: collapse;
+}
+tbody td:nth-child(even) {
+    color: rgb(18, 88, 226);
+  }
+tbody td:nth-child(odd) {
+    color: rgb(176, 151, 51);
+  }
+tbody th:nth-child(even) {
+    color: rgb(18, 88, 226);
+  }
+tbody th:nth-child(odd) {
+    color: rgb(176, 151, 51);
+  }
+ul {
+    font-size: 30pt;
+    list-style: none
+}
+li {
+    font-size: 20pt;
+}
