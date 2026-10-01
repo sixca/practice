@@ -1,0 +1,96 @@
+# 관심 구역 정의
+#
+# 실거래가 API는 "시군구(lawd_cd) + 계약월" 단위로만 조회됩니다.
+# 그래서 시군구 전체 거래를 받아온 뒤 법정동(dongs)과 지번 본번(bonbun)으로 구역 내 거래만 걸러냅니다.
+#
+# - bonbun: 구역에 포함되는 지번의 "본번" 목록. "360" 이면 360, 360-1, 360-15 … 가 모두 매칭됩니다.
+#           비워두면 해당 법정동 전체 거래가 이 구역으로 잡힙니다(구역 밖 거래가 섞임).
+#           정확한 지번은 정비구역 지정 고시문 / 서울시 정비사업 정보몽땅(cleanup.seoul.go.kr)에서 확인해 채우세요.
+# - note:   대표 지번 메모. 기억에 의존한 값이라 반드시 확인 후 사용하세요.
+# - nearby_new_ppp: 주변 신축(준공 10년 이내) 시세, 공급면적 3.3㎡당 만원. rank_listings.py 의 "안전마진" 계산에 쓰입니다.
+#                   0 이면 안전마진을 계산하지 않습니다.
+# - default_ratio:  비례율(%) 기본값. 매물 CSV 에 비례율이 비어 있으면 이 값을 씁니다.
+#
+# 시군구 코드: 용산구 11170, 성동구 11200, 서초구 11650, 강남구 11680, 송파구 11710, 동작구 11590, 마포구 11440
+
+[[zone]]
+name = "한남2구역"
+lawd_cd = "11170"
+dongs = ["보광동", "이태원동"]
+bonbun = []
+note = "보광동 272-3 일대 (확인 필요)"
+nearby_new_ppp = 0
+default_ratio = 100
+
+[[zone]]
+name = "한남4구역"
+lawd_cd = "11170"
+dongs = ["보광동"]
+bonbun = []
+note = "보광동 360 일대 (확인 필요)"
+nearby_new_ppp = 0
+default_ratio = 100
+
+[[zone]]
+name = "한남5구역"
+lawd_cd = "11170"
+dongs = ["동빙고동", "보광동"]
+bonbun = []
+note = "동빙고동 60 일대 (확인 필요)"
+nearby_new_ppp = 0
+default_ratio = 100
+
+[[zone]]
+name = "방배13구역"
+lawd_cd = "11650"
+dongs = ["방배동"]
+bonbun = []
+note = "방배동 541 일대 (확인 필요)"
+nearby_new_ppp = 0
+default_ratio = 100
+
+[[zone]]
+name = "성수1지구"
+lawd_cd = "11200"
+dongs = ["성수동1가"]
+bonbun = []
+note = "성수동1가 72-10 일대 (확인 필요)"
+nearby_new_ppp = 0
+default_ratio = 100
+
+[[zone]]
+name = "성수2지구"
+lawd_cd = "11200"
+dongs = ["성수동2가"]
+bonbun = []
+note = "성수동2가 506 일대 (확인 필요)"
+nearby_new_ppp = 0
+default_ratio = 100
+
+[[zone]]
+name = "성수3지구"
+lawd_cd = "11200"
+dongs = ["성수동2가"]
+bonbun = []
+note = "성수동2가 576 일대 (확인 필요)"
+nearby_new_ppp = 0
+default_ratio = 100
+
+[[zone]]
+name = "성수4지구"
+lawd_cd = "11200"
+dongs = ["성수동2가"]
+bonbun = []
+note = "성수동2가 219-4 일대 (확인 필요)"
+nearby_new_ppp = 0
+default_ratio = 100
+
+# 비슷한 가격대 구역을 추가하려면 블록을 복사해서 쓰면 됩니다. 예:
+# [[zone]]
+# name = "한남3구역"
+# lawd_cd = "11170"
+# dongs = ["한남동", "보광동"]
+# bonbun = []
+# note = "한남동 686 일대"
+# nearby_new_ppp = 0
+# default_ratio = 100
