@@ -54,6 +54,20 @@ class MolitTest(unittest.TestCase):
         row = mt.to_row(z, "rh", t, "일치")
         self.assertEqual(row["대지평당가(만원)"], round(95000 / (25.1 / mt.PYEONG)))
 
+    def test_bonbun_counts(self):
+        rows = [{"구역": "Z", "법정동": "보광동", "지번": j, "대지평당가(만원)": v, "지번매칭": "동전체"}
+                for j, v in [("360-1", 10000), ("360-12", 12000), ("272-3", "")]]
+        out = {r["본번"]: r for r in mt.bonbun_counts(rows)}
+        self.assertEqual(out["360"]["거래건수"], 2)
+        self.assertEqual(out["360"]["대지평당가_중위(만원)"], 11000)
+        self.assertEqual(out["272"]["대지평당가_중위(만원)"], "")
+
+    def test_zone_prices_filled(self):
+        zones = rl.load_zone_settings(Path(rl.__file__).with_name("zones.toml"))
+        for name in ["한남2구역", "한남4구역", "한남5구역", "방배13구역",
+                     "성수1지구", "성수2지구", "성수3지구", "성수4지구"]:
+            self.assertGreater(zones[name]["nearby_new_ppp"], 0, name)
+
     def test_months(self):
         self.assertEqual(mt.month_range("202511", "202602"),
                          ["202511", "202512", "202601", "202602"])

@@ -279,6 +279,23 @@ def summarize(rows: list[dict]) -> list[dict]:
     return out
 
 
+def bonbun_counts(rows: list[dict]) -> list[dict]:
+    """구역 × 법정동 × 본번별 거래 건수. zones.toml 의 bonbun 을 채울 때 지도와 대조하는 용도."""
+    groups: dict[tuple[str, str, str], list[dict]] = {}
+    for r in rows:
+        main = r["지번"].split("-")[0].strip() or "(없음)"
+        groups.setdefault((r["구역"], r["법정동"], main), []).append(r)
+    out = []
+    for (zone, dong, main), rs in sorted(groups.items()):
+        ppp = [r["대지평당가(만원)"] for r in rs if r["대지평당가(만원)"] != ""]
+        out.append({
+            "구역": zone, "법정동": dong, "본번": main, "거래건수": len(rs),
+            "대지평당가_중위(만원)": round(statistics.median(ppp)) if ppp else "",
+            "지번매칭": rs[0]["지번매칭"],
+        })
+    return out
+
+
 def write_csv(path: Path, rows: list[dict], columns: list[str]) -> None:
     # utf-8-sig: 엑셀에서 바로 열어도 한글이 깨지지 않는다.
     with open(path, "w", newline="", encoding="utf-8-sig") as f:
@@ -356,12 +373,19 @@ def main(argv: list[str] | None = None) -> int:
     if summary:
         write_csv(summary_path, summary, list(summary[0].keys()))
 
+    bonbun_rows = bonbun_counts(rows)
+    bonbun_path = args.out.with_name(args.out.stem + "_bonbun.csv")
+    if bonbun_rows:
+        write_csv(bonbun_path, bonbun_rows, list(bonbun_rows[0].keys()))
+
     print(f"\n{len(rows)}건 → {args.out}")
     for s in summary:
         print(f"  {s['구역']:<8} {s['유형']:<6} {s['거래건수']:>4}건  "
               f"대지평당 중위 {s['대지평당가_중위(만원)']}만원  (최근 {s['최근거래일']})")
     if summary:
         print(f"요약 → {summary_path}")
+    if any(not z.bonbun for z in zones) and bonbun_rows:
+        print(f"본번별 건수 → {bonbun_path}  (bonbun 이 빈 구역은 이 파일을 지도와 대조해 zones.toml 에 채우세요)")
     return 0
 
 
